@@ -31,6 +31,6 @@ export const Card = ({ name, price, quantity, photo }) => {
           </a>
         </div>
       </div>
-    </div>
-  );
+    </div>
+  );
 };
