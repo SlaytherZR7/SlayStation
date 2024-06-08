@@ -6,6 +6,7 @@ import {Carrusel} from './components/Carrusel';
 import { Carrusel2 } from './components/Carrusel2';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
+import { CardLarge } from './components/CardLarge';
 const products = [
   {
     name: 'Impresora 3D Anycubic Kobra Plus',
@@ -107,7 +108,7 @@ const products2=[
 export default function App() {
   return (
     <>
-    {/* <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' /> */}
+    {/* <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' />
       <Navbar />
       <div>
         <div className="p-6">
@@ -126,7 +127,13 @@ export default function App() {
       type='Chat Help'
     />
 
-    <Sidebar/>
+    <Sidebar/> */}
+    <CardLarge
+    name='Impresora 3D Anycubic Kobra Plus'
+    price={690}
+    quantity={5}
+    photo='https://http2.mlstatic.com/D_NQ_NP_810219-MLA50000033018_052022-O.webp'
+  />
     </>
 
   );
