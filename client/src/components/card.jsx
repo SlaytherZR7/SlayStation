@@ -1,7 +1,6 @@
 export const Card = ({ name, price, quantity, photo }) => {
   return (
     <div className='w-64 max-w-sm min-w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
-    <div className='w-64 max-w-sm min-w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
       <a href='#'>
         <div className='h-48 p-3 overflow-hidden'>
           <img
