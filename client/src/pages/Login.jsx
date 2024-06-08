@@ -19,12 +19,14 @@ export const Login = ({ photo }) => {
             Iniciar sesión
           </h2>
           <Input
+            isRequired={true}
             label='Correo electrónico'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
           />
           <Input
+            isRequired={true}
             label='Contraseña'
             placeholder='********'
             id='contraseña'
