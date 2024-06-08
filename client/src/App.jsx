@@ -7,6 +7,7 @@ import { Carrusel2 } from './components/Carrusel2';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import { CardLarge } from './components/CardLarge';
+import { Carrusel3 } from './components/Carrusel3';
 const products = [
   {
     name: 'Impresora 3D Anycubic Kobra Plus',
@@ -105,6 +106,7 @@ const products2=[
   }
 
 ]
+
 export default function App() {
   return (
     <>
@@ -119,7 +121,6 @@ export default function App() {
           <Carrusel2 products={products2} />
         </div>
       </div>
-
       <Chat 
       nickname='Mr-DUDU'
       photo='https://flowbite.com/docs/images/products/apple-watch.png'
@@ -128,12 +129,7 @@ export default function App() {
     />
 
     <Sidebar/> */}
-    <CardLarge
-    name='Impresora 3D Anycubic Kobra Plus'
-    price={690}
-    quantity={5}
-    photo='https://http2.mlstatic.com/D_NQ_NP_810219-MLA50000033018_052022-O.webp'
-  />
+    <Carrusel3 products={products} />
     </>
 
   );
