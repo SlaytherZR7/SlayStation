@@ -1,11 +1,13 @@
 import { SignUp } from './pages/Signup';
 
-import {Chat} from './components/Chat';
-import {Input} from './components/Input';
-import {Carrusel} from './components/Carrusel';
+import { Chat } from './components/Chat';
+import { Input } from './components/Input';
+import { Carrusel } from './components/Carrusel';
 import { Carrusel2 } from './components/Carrusel2';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
+import { Login } from './pages/Login';
+import { DashboardClient } from './pages/DashboardClient';
 import { CardLarge } from './components/CardLarge';
 import { Carrusel3 } from './components/Carrusel3';
 const products = [
@@ -108,6 +110,7 @@ const products2=[
 ]
 
 export default function App() {
+  return <DashboardClient />;
   return (
     <>
     {/* <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' />
