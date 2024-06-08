@@ -103,8 +103,10 @@ const products2=[
 ]
 export default function App() {
   return (
-    <div>
-      <Navbar />
+    <>
+      <Navbar 
+        photo='src/assets/img-login.jpg'
+      />
       <div>
         <div className="p-6">
           <h1 className="text-2xl font-bold mb-4 text-gray-900">Productos</h1>
@@ -114,6 +116,13 @@ export default function App() {
           <Carrusel2 products={products2} />
         </div>
       </div>
-    </div>
+      <Chat 
+      nickname='Mr-DUDU'
+      photo='https://flowbite.com/docs/images/products/apple-watch.png'
+      message='Hello, World! this is my message to you!'
+      type='Chat Help'
+    />
+    </>
+
   );
 }
