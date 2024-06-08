@@ -110,7 +110,6 @@ const products2=[
 ]
 
 export default function App() {
-  return <DashboardClient />;
   return (
     <>
     {/* <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' />
@@ -130,9 +129,11 @@ export default function App() {
       message='Hello, World! this is my message to you!'
       type='Chat Help'
     />
+        <DashboardClient />
 
     <Sidebar/> */}
-    <Carrusel3 products={products} />
+
+<Carrusel3 products={products} />
     </>
 
   );

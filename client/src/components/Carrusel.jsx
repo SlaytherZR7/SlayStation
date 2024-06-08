@@ -39,7 +39,7 @@ export const Carrusel = ({ products }) => {
         </span>
       </button>
       <div
-        className='flex overflow-x-auto space-x-10 p-10 bg-gray-800 rounded-lg scrollbar-hide snap-x snap-mandatory'
+        className='flex overflow-x-hidden space-x-10 p-10 bg-gray-800 rounded-lg scrollbar-hide snap-x snap-mandatory'
         ref={carruselRef}
       >
         {products.map((product, index) => (
