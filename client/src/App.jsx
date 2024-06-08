@@ -6,6 +6,7 @@ import {Carrusel} from './components/Carrusel';
 import { Carrusel2 } from './components/Carrusel2';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
+import { Footer } from './components/Footer';
 const products = [
   {
     name: 'Impresora 3D Anycubic Kobra Plus',
@@ -125,9 +126,7 @@ export default function App() {
       message='Hello, World! this is my message to you!'
       type='Chat Help'
     />
-
-    <Sidebar/>
+    <Footer />
     </>
-
   );
 }
