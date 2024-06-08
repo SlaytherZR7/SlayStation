@@ -1,12 +1,8 @@
 import { SignUp } from './pages/Signup';
+import { Login } from './pages/Login';
+import { DashboardClient } from './pages/DashboardClient';
+import { DashboardBusqueda } from './pages/DashboardBusqueda';
 
-import {Chat} from './components/Chat';
-import {Input} from './components/Input';
-import {Carrusel} from './components/Carrusel';
-import { Carrusel2 } from './components/Carrusel2';
-import { Navbar } from './components/Navbar';
-import { Sidebar } from './components/Sidebar';
-import { Footer } from './components/Footer';
 const products = [
   {
     name: 'Impresora 3D Anycubic Kobra Plus',
@@ -105,28 +101,11 @@ const products2=[
   }
 
 ]
+
 export default function App() {
   return (
     <>
-      <Navbar 
-        photo='src/assets/img-login.jpg'
-      />
-      <div>
-        <div className="p-6">
-          <h1 className="text-2xl font-bold mb-4 text-gray-900">Productos</h1>
-          <Carrusel products={products} />
-        </div>
-        <div className="p-6">
-          <Carrusel2 products={products2} />
-        </div>
-      </div>
-      <Chat 
-      nickname='Mr-DUDU'
-      photo='https://flowbite.com/docs/images/products/apple-watch.png'
-      message='Hello, World! this is my message to you!'
-      type='Chat Help'
-    />
-    <Footer />
+    <DashboardBusqueda />
     </>
   );
 }
