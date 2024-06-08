@@ -1,8 +1,15 @@
 export const Card = ({ name, price, quantity, photo }) => {
   return (
-    <div classNameName='w-64 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+    <div className='w-64 max-w-sm min-w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+    <div className='w-64 max-w-sm min-w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
       <a href='#'>
-        <img classNameName='p-8 rounded-t-lg' src={photo} alt={name} />
+        <div className='h-48 p-3 overflow-hidden'>
+          <img
+            className='w-full h-full object-contain'
+            src={photo}
+            alt={name}
+          />
+        </div>
       </a>
       <div classNameName='px-5 pb-5'>
         <a href='#'>
