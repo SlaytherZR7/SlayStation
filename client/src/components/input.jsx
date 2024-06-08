@@ -3,12 +3,11 @@ export const Input = ({ label, iconPath, placeholder, id, type }) => {
     <div className='mb-6'>
       <label
         htmlFor={id}
-        className='block mb-2 text-sm font-medium text-gray-900 dark:text-black'
-      >
+        className='block mb-2 text-sm font-medium text-gray-900 dark:text-black'>
         {label}
       </label>
       <div className='relative'>
-        <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
+        <div className='absolute inset-y-0 start-1 flex items-center ps-3.5 pointer-events-none'>
           <svg
             className='w-4 h-4 text-gray-500 dark:text-gray-400'
             aria-hidden='true'
