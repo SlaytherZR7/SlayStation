@@ -9,8 +9,4 @@ export default function App() {
       photo='https://flowbite.com/docs/images/products/apple-watch.png'
     />
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dd122b1c59aa5636f48c4f819e639c4b906ea575
