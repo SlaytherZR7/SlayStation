@@ -1,3 +1,5 @@
+import { SignUp } from './pages/Signup';
+
 import {Chat} from './components/Chat';
 import {Input} from './components/Input';
 import {Carrusel} from './components/Carrusel';
@@ -103,6 +105,7 @@ const products2=[
 
 ]
 export default function App() {
+  return <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' />;
   return (
     <>
       <Navbar />
