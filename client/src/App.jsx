@@ -1,12 +1,12 @@
-import { Card } from './components/Card';
 import {Chat} from './components/Chat';
 
 export default function App() {
   return (
     <Chat 
-      nickname='John Doe'
-      message='Hello, World!'
+      nickname='Mr-DUDU'
       photo='https://flowbite.com/docs/images/products/apple-watch.png'
+      message='Hello, World! this is my message to you!'
+      type='Chat Help'
     />
   );
 }

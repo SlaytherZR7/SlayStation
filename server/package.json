@@ -12,5 +12,9 @@
   ],
   "author": "Gruopo 1 de Aplicaciones Web Avanzadas",
   "license": "ISC",
-  "description": "Backend del Marketplace de videojuegos hecho con Express y PostgreSQL"
+  "description": "Backend del Marketplace de videojuegos hecho con Express y PostgreSQL",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  }
 }
