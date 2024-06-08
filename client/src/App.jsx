@@ -2,6 +2,7 @@ import { SignUp } from './pages/Signup';
 import { Login } from './pages/Login';
 import { DashboardClient } from './pages/DashboardClient';
 import { DashboardBusqueda } from './pages/DashboardBusqueda';
+import { DashboardRoot } from './pages/DashboardRoot';
 
 const products = [
   {
@@ -105,7 +106,7 @@ const products2=[
 export default function App() {
   return (
     <>
-    <DashboardBusqueda />
+    <DashboardRoot />
     </>
   );
 }
