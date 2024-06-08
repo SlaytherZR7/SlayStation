@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
 import { AvatarUploader } from '../components/AvatarUploader';
+import { QuestionsModal } from '../components/QuestionsModal';
 
-export const SignUp = () => {
+export const SignUp = ({ photo }) => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAvatarChange = (avatar) => {
     setSelectedAvatar(avatar);
   };
+
+  const questions = [
+    '¿Cuál es tu color favorito?',
+    '¿Cuál es el nombre de tu primera mascota?',
+    '¿En qué ciudad naciste?',
+  ];
 
   return (
     <div className='flex items-center justify-between bg-gray-900 h-screen'>
       <div
         className='w-2/4 h-full bg-cover bg-center bg-no-repeat'
         style={{
-          backgroundImage:
-            "url('https://i.pinimg.com/originals/87/61/d7/8761d74a702d9b60ef2c0dcb3174fa8d.png')",
+          backgroundImage: `url(${photo})`,
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4 h-full'>
@@ -91,7 +98,8 @@ export const SignUp = () => {
             </label>
           </div>
           <button
-            type='submit'
+            type='button'
+            onClick={() => setIsModalOpen(true)}
             className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-max mx-auto'
           >
             Registrarse
@@ -104,6 +112,12 @@ export const SignUp = () => {
           </div>
         </form>
       </div>
+
+      <QuestionsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        questions={questions}
+      />
     </div>
   );
 };
