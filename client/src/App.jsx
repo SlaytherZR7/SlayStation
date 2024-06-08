@@ -1,3 +1,12 @@
+import { Card } from './components/Card';
+
 export default function App() {
-  return <h1 className='text-3xl font-bold underline'>Hello world!</h1>;
+  return (
+    <Card
+      name='Apple Watch'
+      price={500}
+      quantity={10}
+      photo='https://flowbite.com/docs/images/products/apple-watch.png'
+    />
+  );
 }
