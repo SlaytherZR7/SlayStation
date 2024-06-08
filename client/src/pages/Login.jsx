@@ -1,14 +1,13 @@
 import React from 'react';
 import { Input } from '../components/Input';
 
-export const Login = () => {
+export const Login = ({ photo }) => {
   return (
     <div className='flex items-center justify-between h-screen bg-gray-900'>
       <div
         className='w-2/4 h-full bg-cover bg-center bg-no-repeat'
         style={{
-          backgroundImage:
-            "url('https://i.pinimg.com/originals/87/61/d7/8761d74a702d9b60ef2c0dcb3174fa8d.png')",
+          backgroundImage: `url(${photo})`,
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4'>
@@ -20,12 +19,14 @@ export const Login = () => {
             Iniciar sesión
           </h2>
           <Input
+            isRequired={true}
             label='Correo electrónico'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
           />
           <Input
+            isRequired={true}
             label='Contraseña'
             placeholder='********'
             id='contraseña'

@@ -22,7 +22,7 @@ export const AvatarUploader = ({ onAvatarChange }) => {
         htmlFor='avatar'
       >
         Selecciona tu foto de perfil
-        <div className='w-20 h-20 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center mt-2 mx-auto'>
+        <div className='w-20 h-20 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center mt-1 mx-auto'>
           {
             avatar ? (
               <img
@@ -39,7 +39,7 @@ export const AvatarUploader = ({ onAvatarChange }) => {
         type='file'
         accept='image/*'
         onChange={handleAvatarChange}
-        className='text-white mt-2'
+        className='text-white mt-1'
         hidden
       />
     </div>
