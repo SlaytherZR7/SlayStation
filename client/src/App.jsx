@@ -107,7 +107,7 @@ const products2=[
 export default function App() {
   return (
     <>
-    <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' />
+    {/* <SignUp photo='src/assets/VALORANT_Omen_Dark.jpg' /> */}
       <Navbar />
       <div>
         <div className="p-6">
