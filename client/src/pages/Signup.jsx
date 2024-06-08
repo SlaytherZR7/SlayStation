@@ -30,24 +30,28 @@ export const SignUp = ({ photo }) => {
           <AvatarUploader onAvatarChange={handleAvatarChange} />
           <div className='grid gap-x-6 gap-y-2 md:grid-cols-2'>
             <Input
+              isRequired={true}
               label='Nombre'
               placeholder='Slayther'
               id='nombre'
               type='text'
             />
             <Input
+              isRequired={true}
               label='Apellido'
               placeholder='Zamora'
               id='apellido'
               type='text'
             />
             <Input
+              isRequired={true}
               label='Nickname'
               placeholder='Mr-Dudu'
               id='nickname'
               type='text'
             />
             <Input
+              isRequired={true}
               label='Celular'
               placeholder='0987654321'
               id='celular'
@@ -56,18 +60,21 @@ export const SignUp = ({ photo }) => {
           </div>
 
           <Input
+            isRequired={true}
             label='Correo electrónico'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
           />
           <Input
+            isRequired={true}
             label='Contraseña'
             placeholder='********'
             id='contraseña'
             type='password'
           />
           <Input
+            isRequired={true}
             label='Confirmar contraseña'
             placeholder='********'
             id='confirmar-contraseña'
