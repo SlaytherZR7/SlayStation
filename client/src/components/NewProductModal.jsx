@@ -1,4 +1,5 @@
 import { Input } from './Input';
+import { ProductImageUploader } from './ProductImageUploader';
 
 export const NewProductModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -30,9 +31,9 @@ export const NewProductModal = ({ isOpen, onClose }) => {
               >
                 <path
                   stroke='currentColor'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
                   d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
                 />
               </svg>
@@ -42,6 +43,9 @@ export const NewProductModal = ({ isOpen, onClose }) => {
           <form className='p-4 md:p-5'>
             <div className='grid gap-4 mb-4 grid-cols-2'>
               <div className='col-span-2'>
+                <ProductImageUploader />
+              </div>
+              <div className='col-span-2'>
                 <Input
                   label='Nombre'
                   placeholder='GTA San Andreas'
@@ -49,7 +53,9 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   type='text'
                   isRequired={true}
                 />
-                <div className='col-span-2 sm:col-span-1'>
+              </div>
+              <div className='col-span-2 flex flex-wrap gap-4'>
+                <div className='flex-1'>
                   <Input
                     label='Precio'
                     placeholder='12.5'
@@ -58,10 +64,10 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     isRequired={true}
                   />
                 </div>
-                <div className='col-span-2 sm:col-span-1'>
+                <div className='flex-1'>
                   <label
                     htmlFor='category'
-                    className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                    className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Categoría
                   </label>
@@ -74,7 +80,9 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     <option value='consola'>Consola</option>
                   </select>
                 </div>
-                <div className='col-span-2 sm:col-span-1'>
+              </div>
+              <div className='col-span-2 flex flex-wrap gap-4'>
+                <div className='flex-1'>
                   <Input
                     label='Cantidad'
                     placeholder='10'
@@ -83,10 +91,10 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     isRequired={true}
                   />
                 </div>
-                <div className='col-span-2 sm:col-span-1'>
+                <div className='flex-1'>
                   <label
                     htmlFor='estado'
-                    className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                    className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
                   >
                     Estado
                   </label>
@@ -102,20 +110,20 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     <option value='recondicionado'>Recondicionado</option>
                   </select>
                 </div>
-                <div className='col-span-2'>
-                  <label
-                    htmlFor='description'
-                    className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                  >
-                    Descripción del producto
-                  </label>
-                  <textarea
-                    id='description'
-                    rows='4'
-                    className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                    placeholder='Write product description here'
-                  ></textarea>
-                </div>
+              </div>
+              <div className='col-span-2'>
+                <label
+                  htmlFor='description'
+                  className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
+                >
+                  Descripción del producto
+                </label>
+                <textarea
+                  id='description'
+                  rows='4'
+                  className='block min-h-24 max-h-72 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  placeholder='Write product description here'
+                ></textarea>
               </div>
             </div>
             <button
