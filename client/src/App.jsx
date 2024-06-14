@@ -3,7 +3,7 @@ import { Login } from './pages/Login';
 import { DashboardClient } from './pages/DashboardClient';
 import { DashboardBusqueda } from './pages/DashboardBusqueda';
 import { DashboardRoot } from './pages/DashboardRoot';
-
+import { Chat } from './components/Chat';
 const products = [
   {
     name: 'Impresora 3D Anycubic Kobra Plus',
@@ -106,7 +106,7 @@ const products2=[
 export default function App() {
   return (
     <>
-    <DashboardRoot />
+    <DashboardBusqueda />
     </>
   );
 }
