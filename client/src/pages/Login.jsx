@@ -1,42 +1,13 @@
-import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Input } from '../components/Input';
 
-function Login({photo}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevenir el envío por defecto del formulario
-
-    // Aquí, implementa la lógica para enviar los datos al servidor
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Login successful', data);
-        // Aquí puedes manejar la redirección al dashboard o almacenar el usuario en el estado global/contexto
-      } else {
-        console.error('Failed to login', data.message);
-        // Manejar errores de login aquí
-      }
-    } catch (error) {
-      console.error('Error submitting form', error);
-    }
-  };
+export const Login = () => {
   return (
     <div className='flex items-center justify-between h-screen bg-gray-900'>
       <div
         className='w-2/4 h-full bg-cover bg-center bg-no-repeat'
         style={{
-          backgroundImage: `url(${photo})`,
+          backgroundImage: `url(https://images8.alphacoders.com/108/1080944.jpg)`,
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4'>
@@ -75,14 +46,14 @@ function Login({photo}) {
           </button>
           <div className='flex gap-1 justify-end'>
             <span className='text-white text-sm'>Don't have an account yet? </span>
-            <a href='#' className='text-white italic underline text-sm'>
+            <Link to='/signup' className='text-white italic underline text-sm'>
               Create an account
-            </a>
+            </Link>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
