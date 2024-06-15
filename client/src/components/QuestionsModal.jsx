@@ -32,7 +32,7 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
       <div className='bg-white rounded-lg shadow dark:bg-gray-700 p-4 md:p-5 max-w-md w-full'>
         <div className='flex items-center justify-between border-b pb-4'>
           <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
-            Preguntas de seguridad
+            Security questions
           </h3>
           <button
             type='button'
@@ -54,7 +54,7 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
                 d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
               />
             </svg>
-            <span className='sr-only'>Cerrar modal</span>
+            <span className='sr-only'>Close modal</span>
           </button>
         </div>
         <div className='mt-4'>
@@ -74,14 +74,14 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
               onClick={handlePrevious}
               className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
             >
-              Atrás
+              Back
             </button>
           )}
           <button
             onClick={handleNext}
             className='ms-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           >
-            {step < questions.length - 1 ? 'Siguiente' : 'Finalizar'}
+            {step < questions.length - 1 ? 'Next' : 'Finish'}
           </button>
         </div>
       </div>

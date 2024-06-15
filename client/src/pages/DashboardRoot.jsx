@@ -120,9 +120,9 @@ export const DashboardRoot = () => {
     <div className='bg-gray-900 flex flex-col gap-4'>
       <Navbar photo='src/assets/img-login.jpg' condition='0'/>
       <Carrusel2 products={products2} />
-      <h1 className='text-white text-2xl font-bold text-center'>Videojuegos</h1>
+      <h1 className='text-white text-2xl font-bold text-center'>Videogames</h1>
       <Carrusel products={products1} />
-      <h1 className='text-white text-2xl font-bold text-center'>Consolas</h1>
+      <h1 className='text-white text-2xl font-bold text-center'>Consoles</h1>
       <Carrusel products={products1} />
       <button
         type='button'

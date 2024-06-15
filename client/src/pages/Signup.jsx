@@ -12,9 +12,9 @@ export const SignUp = ({ photo }) => {
   };
 
   const questions = [
-    '¿Cuál es tu color favorito?',
-    '¿Cuál es el nombre de tu primera mascota?',
-    '¿En qué ciudad naciste?',
+    'What is your favorite color?',
+    'What is the name of your first pet?',
+    'Where is your birthplace?',
   ];
 
   return (
@@ -31,14 +31,14 @@ export const SignUp = ({ photo }) => {
           <div className='grid gap-x-6 gap-y-2 md:grid-cols-2'>
             <Input
               isRequired={true}
-              label='Nombre'
+              label='Name'
               placeholder='Slayther'
               id='nombre'
               type='text'
             />
             <Input
               isRequired={true}
-              label='Apellido'
+              label='Last name'
               placeholder='Zamora'
               id='apellido'
               type='text'
@@ -52,7 +52,7 @@ export const SignUp = ({ photo }) => {
             />
             <Input
               isRequired={true}
-              label='Celular'
+              label='Phone number'
               placeholder='0987654321'
               id='celular'
               type='phone'
@@ -61,21 +61,21 @@ export const SignUp = ({ photo }) => {
 
           <Input
             isRequired={true}
-            label='Correo electrónico'
+            label='Email'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
           />
           <Input
             isRequired={true}
-            label='Contraseña'
+            label='Password'
             placeholder='********'
             id='contraseña'
             type='password'
           />
           <Input
             isRequired={true}
-            label='Confirmar contraseña'
+            label='Confirm password'
             placeholder='********'
             id='confirmar-contraseña'
             type='password'
@@ -109,12 +109,12 @@ export const SignUp = ({ photo }) => {
             onClick={() => setIsModalOpen(true)}
             className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-max mx-auto'
           >
-            Registrarse
+            Sign Up
           </button>
           <div className='flex gap-1 justify-center'>
-            <span className='text-white text-sm'>¿Ya tienes una cuenta?</span>
+            <span className='text-white text-sm'>Do you already have an account?</span>
             <a href='#' className='text-white italic underline text-sm'>
-              Inicia sesión aquí
+              Log in here
             </a>
           </div>
         </form>
