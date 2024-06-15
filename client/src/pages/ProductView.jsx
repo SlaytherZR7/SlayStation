@@ -27,3 +27,5 @@ export const ProductView = () => {
     </div>
   );
 };
+
+export default ProductView;
