@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '../components/Input';
 
-export const Login = ({ photo }) => {
+function Login({photo}) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevenir el envío por defecto del formulario
+
+    // Aquí, implementa la lógica para enviar los datos al servidor
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Login successful', data);
+        // Aquí puedes manejar la redirección al dashboard o almacenar el usuario en el estado global/contexto
+      } else {
+        console.error('Failed to login', data.message);
+        // Manejar errores de login aquí
+      }
+    } catch (error) {
+      console.error('Error submitting form', error);
+    }
+  };
   return (
     <div className='flex items-center justify-between h-screen bg-gray-900'>
       <div
@@ -11,7 +40,7 @@ export const Login = ({ photo }) => {
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4'>
-        <form className='w-80 flex flex-col gap-4'>
+        <form className='w-80 flex flex-col gap-4' >
           <h1 className='text-white text-4xl font-bold text-center font-press-start-2p'>
             SlayStation
           </h1>
@@ -54,5 +83,6 @@ export const Login = ({ photo }) => {
       </div>
     </div>
   );
-};
+}
+
 export default Login;
