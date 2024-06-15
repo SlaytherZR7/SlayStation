@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon build/index.js",
+    "dev": "nodemon src/index.js",
     "start": "node build/index.js",
     "tsc": "tsc",
     "tsc:init": "node_modules/.bin/tsc --init",
