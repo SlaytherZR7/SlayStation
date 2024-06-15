@@ -4,7 +4,7 @@ import { ProductCard } from '../components/ProductCard';
 
 export const ProductView = () => {
   return (
-    <div className='min-h-screen bg-gray-100'>
+    <div className='min-h-screen bg-gray-800'>
         {/* Header en la parte superior */}
       <header className='bg-gray-800 text-white'>
         <Navbar photo='src/assets/img-login.jpg' />

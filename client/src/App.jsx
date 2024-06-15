@@ -9,7 +9,7 @@ import { ProductView } from './pages/ProductView';
 export default function App() {
   return (
     <>
-    <ProductView 
+    <ProductView className='bg-gray-800 '
     name="pepe el toro 3D super poderoso pitudo y chingon" 
     price="12"
     description={[
