@@ -16,18 +16,18 @@ export const Login = ({ photo }) => {
             SlayStation
           </h1>
           <h2 className='text-white text-2xl font-bold text-center'>
-            Iniciar sesión
+            Sign In
           </h2>
           <Input
             isRequired={true}
-            label='Correo electrónico'
+            label='Email'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
           />
           <Input
             isRequired={true}
-            label='Contraseña'
+            label='Password'
             placeholder='********'
             id='contraseña'
             type='password'
@@ -36,18 +36,18 @@ export const Login = ({ photo }) => {
             href='#'
             className='block text-white underline italic text-sm ml-auto'
           >
-            ¿Olvidaste tu contraseña?
+            Forgot your password?
           </a>
           <button
             type='submit'
             className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-max mx-auto'
           >
-            Iniciar sesión
+            Continue
           </button>
           <div className='flex gap-1 justify-end'>
-            <span className='text-white text-sm'>¿No tienes una cuenta?</span>
+            <span className='text-white text-sm'>Don't have an account yet? </span>
             <a href='#' className='text-white italic underline text-sm'>
-              Regístrate aquí
+              Create an account
             </a>
           </div>
         </form>

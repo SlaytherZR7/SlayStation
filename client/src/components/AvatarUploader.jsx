@@ -21,7 +21,7 @@ export const AvatarUploader = ({ onAvatarChange }) => {
         className='cursor-pointer block mb-1 text-sm font-medium text-gray-900 dark:text-white'
         htmlFor='avatar'
       >
-        Selecciona tu foto de perfil
+        Select a profile picture
         <div className='w-20 h-20 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center mt-1 mx-auto'>
           {
             avatar ? (
