@@ -19,6 +19,11 @@ export const Chat = ({ nickname, photo, message, type }) => {
           <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
           <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
           <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
+          <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
+          <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
+          <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
+          <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
+          <Message nickname='Mr-DUDU' message='Hello, World!' photo='https://flowbite.com/docs/images/products/apple-watch.png'/>
         </ul>
       </div>
       <form className="flex items-center p-4 w-full">
