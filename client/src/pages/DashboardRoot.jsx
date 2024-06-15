@@ -118,7 +118,7 @@ export const DashboardRoot = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className='bg-gray-900 flex flex-col gap-4'>
-      <Navbar photo='src/assets/img-login.jpg' />
+      <Navbar photo='src/assets/img-login.jpg' condition='0'/>
       <Carrusel2 products={products2} />
       <h1 className='text-white text-2xl font-bold text-center'>Videojuegos</h1>
       <Carrusel products={products1} />
@@ -139,7 +139,7 @@ export const DashboardRoot = () => {
         <img class="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/products/apple-watch.png" alt="" />
         <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
       </div>
-
+      <Chat />
     </div>
   );
 };

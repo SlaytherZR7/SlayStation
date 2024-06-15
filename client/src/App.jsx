@@ -9,7 +9,7 @@ import { ProductView } from './pages/ProductView';
 export default function App() {
   return (
     <>
-      <DashboardRoot />
+      <DashboardClient />
     </>
   
   );
