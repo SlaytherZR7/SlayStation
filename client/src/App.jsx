@@ -106,7 +106,7 @@ const products2=[
 export default function App() {
   return (
     <>
-    <DashboardRoot />
+    <DashboardBusqueda/>
     </>
   );
 }
