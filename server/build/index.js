@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.get('/', (_req, res) => {
     res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
-  });
+});
 // Usa las rutas de autenticación en la aplicación
 app.listen(3000, () => {
     console.log(`Server is running on port 3000. Visit http://localhost:3000/ in your browser.`);

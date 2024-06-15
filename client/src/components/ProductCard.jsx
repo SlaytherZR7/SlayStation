@@ -28,7 +28,7 @@ export const ProductCard = ({name, price, description, quantity, state, photo,})
             </div>
           </a>
         </div>
-
+.
         {/* Contenedor de la información */}
         <div className='flex-1 md:flex-grow-[1/3] flex flex-col justify-center items-center dark:bg-gray-900 rounded-lg p-4 mx-2 mt-4 md:mt-0'>
           <a href='#'>
