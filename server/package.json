@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node App.js"
   },
   "keywords": [
     "Express",
@@ -19,5 +19,16 @@
     "express-session": "^1.18.0",
     "react-router-dom": "^6.23.1",
     "ws": "^8.17.0"
+  },
+  "name": "slaystation-server",
+  "version": "1.0.0",
+  "description": "Servidor para la aplicación SlayStation",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
