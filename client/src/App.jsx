@@ -1,6 +1,6 @@
 // src/App.jsx
+import { Routes, Route, Navigate } from 'react-router-dom';
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
 import DashboardBusqueda from './pages/DashboardBusqueda.jsx';
 import DashboardClient from './pages/DashboardClient.jsx';
 import DashboardRoot from './pages/DashboardRoot.jsx';
@@ -12,7 +12,8 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<DashboardRoot />} />
+        <Route path="" element={<DashboardRoot />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/busqueda" element={<DashboardBusqueda />} />
         <Route path="/client" element={<DashboardClient />} />
         <Route path="/product" element={<ProductView />} />
