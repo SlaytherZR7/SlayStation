@@ -1,9 +1,9 @@
-// Usa import en lugar de require
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 const app = express();
+
 // __dirname y __filename no están definidos en ESM por defecto
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

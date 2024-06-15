@@ -3,7 +3,7 @@ import { Input } from '../components/Input';
 import { AvatarUploader } from '../components/AvatarUploader';
 import { QuestionsModal } from '../components/QuestionsModal';
 
-export const SignUp = ({ photo }) => {
+export const SignUp = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export const SignUp = ({ photo }) => {
       <div
         className='w-2/4 h-full bg-cover bg-center bg-no-repeat'
         style={{
-          backgroundImage: `url(${photo})`,
+          backgroundImage: `url(https://images4.alphacoders.com/119/thumb-1920-1194463.jpg)`,
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4 h-full'>

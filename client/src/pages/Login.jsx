@@ -1,13 +1,13 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Input } from '../components/Input';
 
-export const Login = ({ photo }) => {
+export const Login = () => {
   return (
     <div className='flex items-center justify-between h-screen bg-gray-900'>
       <div
         className='w-2/4 h-full bg-cover bg-center bg-no-repeat'
         style={{
-          backgroundImage: `url(${photo})`,
+          backgroundImage: `url(https://images8.alphacoders.com/108/1080944.jpg)`,
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4'>
@@ -46,13 +46,14 @@ export const Login = ({ photo }) => {
           </button>
           <div className='flex gap-1 justify-end'>
             <span className='text-white text-sm'>Don't have an account yet? </span>
-            <a href='#' className='text-white italic underline text-sm'>
+            <Link to='/signup' className='text-white italic underline text-sm'>
               Create an account
-            </a>
+            </Link>
           </div>
         </form>
       </div>
     </div>
   );
 };
+
 export default Login;
