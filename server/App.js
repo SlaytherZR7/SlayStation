@@ -1,13 +1,20 @@
-const express = require('express')
+// Usa import en lugar de require
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const path = require('path')
+const app = express();
 
-const app = express()
+// __dirname y __filename no están definidos en ESM por defecto
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '../client/dist'))) //milward
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
-})
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
-app.listen(3000)
-console.log(`Server is running on port ${3000}`)
+app.listen(3000, () => {
+  console.log(`Server is running on port 3000`);
+});
