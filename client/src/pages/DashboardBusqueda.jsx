@@ -117,3 +117,4 @@ export const DashboardBusqueda = () => {
         </div>
       );
 };
+export default DashboardBusqueda;

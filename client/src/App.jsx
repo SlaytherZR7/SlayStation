@@ -1,16 +1,26 @@
-import { SignUp } from './pages/Signup';
-import { Login } from './pages/Login';
-import { DashboardClient } from './pages/DashboardClient';
-import { DashboardBusqueda } from './pages/DashboardBusqueda';
-import { DashboardRoot } from './pages/DashboardRoot';
-import { Chat } from './components/Chat';
-import { ProductCard } from './components/ProductCard';
-import { ProductView } from './pages/ProductView';
+// src/App.jsx
+import { Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import DashboardBusqueda from './pages/DashboardBusqueda.jsx';
+import DashboardClient from './pages/DashboardClient.jsx';
+import DashboardRoot from './pages/DashboardRoot.jsx';
+import Login from './pages/Login.jsx';
+import ProductView from './pages/ProductView.jsx';
+import Signup from './pages/Signup.jsx';
+
 export default function App() {
   return (
-    <>
-      <DashboardClient />
-    </>
-  
+    <div>
+      <Routes>
+        <Route path="" element={<DashboardRoot />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/busqueda" element={<DashboardBusqueda />} />
+        <Route path="/client" element={<DashboardClient />} />
+        <Route path="/product" element={<ProductView />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </div>
   );
 }
+

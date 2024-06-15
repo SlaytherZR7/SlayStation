@@ -55,3 +55,4 @@ export const Login = ({ photo }) => {
     </div>
   );
 };
+export default Login;

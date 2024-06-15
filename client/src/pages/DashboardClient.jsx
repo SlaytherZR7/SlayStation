@@ -139,3 +139,5 @@ export const DashboardClient = () => {
     </div>
   );
 };
+
+export default DashboardClient;

@@ -128,3 +128,4 @@ export const SignUp = ({ photo }) => {
     </div>
   );
 };
+export default SignUp;

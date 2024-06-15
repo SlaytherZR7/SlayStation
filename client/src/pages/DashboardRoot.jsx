@@ -143,3 +143,4 @@ export const DashboardRoot = () => {
     </div>
   );
 };
+export default DashboardRoot;
