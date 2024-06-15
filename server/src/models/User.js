@@ -4,8 +4,8 @@ const sequelize = require('../config/database'); // Asegúrate de configurar tu 
 const User = sequelize.define('User', {
   name: { type: DataTypes.STRING, allowNull: false },
   lastname: { type: DataTypes.STRING, allowNull: false },
-  nickname: { type: DataTypes.STRING, allowNull: false },
-  phone: { type: DataTypes.STRING },
+  nickname: { type: DataTypes.STRING, allowNull: false, unique: true  },
+  phone: { type: DataTypes.STRING, unique: true  },
   email: { type: DataTypes.STRING, allowNull: false, unique: true },
   password: { type: DataTypes.STRING, allowNull: false },
   typeUser: { type: DataTypes.STRING, allowNull: false }
