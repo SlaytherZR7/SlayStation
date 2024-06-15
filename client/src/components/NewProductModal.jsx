@@ -47,7 +47,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
               </div>
               <div className='col-span-2'>
                 <Input
-                  label='Nombre'
+                  label='Name'
                   placeholder='GTA San Andreas'
                   id='nombre'
                   type='text'
@@ -57,7 +57,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
               <div className='col-span-2 flex flex-wrap gap-4'>
                 <div className='flex-1'>
                   <Input
-                    label='Precio'
+                    label='Price'
                     placeholder='12.5'
                     id='precio'
                     type='number'
@@ -69,22 +69,22 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     htmlFor='category'
                     className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
                   >
-                    Categoría
+                    Category
                   </label>
                   <select
                     id='category'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                   >
-                    <option value=''>Selecciona una categoría</option>
-                    <option value='videojuego'>Videojuegos</option>
-                    <option value='consola'>Consola</option>
+                    <option value=''>Select a category</option>
+                    <option value='videojuego'>Videogames</option>
+                    <option value='consola'>Console</option>
                   </select>
                 </div>
               </div>
               <div className='col-span-2 flex flex-wrap gap-4'>
                 <div className='flex-1'>
                   <Input
-                    label='Cantidad'
+                    label='Quantity'
                     placeholder='10'
                     id='cantidad'
                     type='number'
@@ -96,18 +96,18 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     htmlFor='estado'
                     className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
                   >
-                    Estado
+                    State
                   </label>
                   <select
                     id='estado'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                   >
                     <option value=''>
-                      Selecciona el estado de tu producto
+                      Select the state of the product
                     </option>
-                    <option value='nuevo'>Nuevo</option>
-                    <option value='usado'>Usado</option>
-                    <option value='recondicionado'>Recondicionado</option>
+                    <option value='nuevo'>New</option>
+                    <option value='usado'>Used</option>
+                    <option value='recondicionado'>Refurbished</option>
                   </select>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   htmlFor='description'
                   className='block mb-1 text-sm font-medium text-gray-900 dark:text-white'
                 >
-                  Descripción del producto
+                  Product description
                 </label>
                 <textarea
                   id='description'

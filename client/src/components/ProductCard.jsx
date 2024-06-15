@@ -52,7 +52,6 @@ export const ProductCard = ({name, price, description, quantity, state, photo,})
                 </select>
                 ({quantity} available)
             </div>
-
             <p className='text-md text-white text-center'>{description}</p>
           </div>
           <br></br>
