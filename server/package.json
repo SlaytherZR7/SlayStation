@@ -14,7 +14,10 @@
   "license": "ISC",
   "description": "Backend del Marketplace de videojuegos hecho con Express y PostgreSQL",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "react-router-dom": "^6.23.1",
     "ws": "^8.17.0"
   }
 }
