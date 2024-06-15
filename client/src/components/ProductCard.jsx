@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 
-export const ProductCard = ({
-  name,
-  price,
-  description,
-  quantity,
-  state,
-  photo,
-}) => {
+export const ProductCard = ({name, price, description, quantity, state, photo,}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpenCategory, setIsDropdownOpenCategory] = useState(false);
   const [isDropdownOpenCondition, setIsDropdownOpenCondition] = useState(false);
@@ -21,7 +14,7 @@ export const ProductCard = ({
   };
 
   return (
-    <div className='w-screen h-screen bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center'>
+    <div className='border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center'>
       <div className='w-11/12 md:w-3/4 lg:w-2/3 xl:w-2/3 dark:bg-gray-900 rounded-lg flex flex-col md:flex-row p-5'>
         {/* Contenedor de la imagen */}
         <div className='flex-1 md:flex-grow-[2/3] flex items-center justify-center bg-white p-3'>
