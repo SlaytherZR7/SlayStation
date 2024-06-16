@@ -3,11 +3,11 @@ const { Pool } = pkg;
 import 'dotenv/config.js';
 
 export const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  user: 'postgres',
-  database: 'slaystation',
-  password: '130203db',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
 });
 
 pool.on('connect', () => {
