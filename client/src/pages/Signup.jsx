@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import { Input } from "../components/Input";
 import { AvatarUploader } from "../components/AvatarUploader";
 import { QuestionsModal } from "../components/QuestionsModal";
@@ -14,15 +15,15 @@ export const SignUp = () => {
   };
 
   const handleAccept = () => {
-    setIsTermsModalOpen(false);  // Cierra el modal
-    setIsChecked(true);  // Marca el checkbox
+    setIsTermsModalOpen(false); // Cierra el modal
+    setIsChecked(true); // Marca el checkbox
   };
 
   const handleCloseModal = () => {
-    setIsTermsModalOpen(false);  // Cierra el modal
-    setIsChecked(false);  // Desmarca el checkbox
+    setIsTermsModalOpen(false); // Cierra el modal
+    setIsChecked(false); // Desmarca el checkbox
   };
-  
+
   const handleAvatarChange = (avatar) => {
     setSelectedAvatar(avatar);
   };
@@ -138,9 +139,9 @@ export const SignUp = () => {
             <span className="text-white text-sm">
               Do you already have an account?
             </span>
-            <a href="#" className="text-white italic underline text-sm">
+            <Link to="/login" className="text-white italic underline text-sm">
               Log in here
-            </a>
+            </Link>
           </div>
         </form>
       </div>

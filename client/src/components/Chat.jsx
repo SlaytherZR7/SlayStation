@@ -11,13 +11,12 @@ export const Chat = ({ nickname, photo, message, type }) => {
   };
 
   return (
-    <div class="z-50  fixed right-0 bottom-0 mr-4 mb-16" >
+    <div class="z-50  fixed right-0 bottom-0 mr-4 mb-4" >
       <img
-        class="w-10 h-10 rounded-full"
-        src="https://flowbite.com/docs/images/products/apple-watch.png"
+        class="w-16 h-16 rounded-full"
+        src={photo}
         onClick={toggleChat}
       />
-      <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
       {isChatVisible && (
         // Chat
         <div className="z-50 flex flex-col h-[500px] w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 fixed right-0 bottom-0 mr-16 mb-20">
@@ -68,6 +67,7 @@ export const Chat = ({ nickname, photo, message, type }) => {
           </form>
         </div>
       )}
+      <span class="bottom-0 right-0 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
     </div>
   );
 };

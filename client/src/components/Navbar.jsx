@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Input } from './Input';
 import { Button } from './Button';
 
@@ -34,12 +36,12 @@ export const Navbar = ({ photo, condition }) => {
           id='navbarSupportedContent1'
           data-twe-collapse-item
         >
-          <a
+          <Link
             className='mb-4 me-5 ms-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0'
-            href='#'
+            to="/"
           >
             <img className='w-16' src={photo} alt='Logo' />
-          </a>
+          </Link>
           <ul
             className='list-style-none me-auto flex flex-col ps-0 lg:flex-row'
             data-twe-navbar-nav-ref
