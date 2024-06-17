@@ -135,11 +135,6 @@ export const DashboardRoot = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-      <div class="z-50  fixed right-0 bottom-0 mr-4 mb-8">
-        <img class="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/products/apple-watch.png" alt="" />
-        <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-      </div>
-      <Chat />
     </div>
   );
 };
