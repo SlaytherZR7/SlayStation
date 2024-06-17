@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Card } from './Card';
 
 import PropTypes from 'prop-types';
-export const Carrusel = ({ products }) => {
+export const Carrusel = ({ products , type }) => {
   const carruselRef = useRef(null);
 
   const scrollLeft = () => {
@@ -52,6 +52,7 @@ export const Carrusel = ({ products }) => {
               price={product.price}
               quantity={product.quantity}
               photo={product.photo}
+              type={type}
             />
           </div>
         ))}

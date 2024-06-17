@@ -12,10 +12,10 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route path="" element={<DashboardRoot />} />
+        <Route path="" element={<DashboardClient />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/busqueda" element={<DashboardBusqueda />} />
-        <Route path="/client" element={<DashboardClient />} />
+        <Route path="/root" element={<DashboardRoot />} />
         <Route path="/product" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
