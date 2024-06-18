@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Card } from './Card';
+import ProductModal from './ProductModal';
 
 export const Carrusel = ({ products }) => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const carruselRef = useRef(null);
 
   const scrollLeft = () => {
@@ -10,6 +12,14 @@ export const Carrusel = ({ products }) => {
 
   const scrollRight = () => {
     carruselRef.current.scrollBy({ left: 1400, behavior: 'smooth' });
+  };
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
   };
 
   return (
@@ -41,16 +51,18 @@ export const Carrusel = ({ products }) => {
         className='flex overflow-x-hidden space-x-10 p-10 bg-gray-800 rounded-lg scrollbar-hide snap-x snap-mandatory'
         ref={carruselRef}
       >
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div
-            className='flex-shrink-0 w-64 bg-gray-900 p-4 rounded-lg shadow-lg snap-center transition-transform duration-75 ease-in-out hover:scale-105'
-            key={index}
+            className='flex-shrink-0 w-64 bg-gray-900 p-4 rounded-lg shadow-lg snap-center transition-transform duration-75 ease-in-out hover:scale-105 cursor-pointer'
+            key={product.product_id}
+            onClick={() => handleProductClick(product)}
           >
             <Card
               product_name={product.product_name}
               product_price={product.product_price}
               product_stock={product.product_stock}
               product_image={product.product_image}
+              product_type='Buy'
             />
           </div>
         ))}
@@ -78,6 +90,9 @@ export const Carrusel = ({ products }) => {
           <span className='sr-only'>Next</span>
         </span>
       </button>
+      {selectedProduct && (
+        <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

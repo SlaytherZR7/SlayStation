@@ -9,16 +9,8 @@ export const Card = ({
   product_image,
   product_type,
 }) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    // Redirigir a la página de producto
-    navigate('/product');
-  };
-
   return (
     <div
-      onClick={handleClick} // Maneja el clic en el contenedor principal
       className='w-64 max-w-sm min-w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer' // Añade cursor-pointer para indicar que es clicable
     >
       <div className='h-48 p-3 overflow-hidden'>
