@@ -6,6 +6,12 @@ import { NewProductModal } from '../components/NewProductModal';
 import { Chat } from '../components/Chat';
 
 export const DashboardClient = () => {
+  const [products, setProducts] = useState([]);
+  useState(() => {
+    fetch('http://localhost:3000/products')
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [videogames, setVideogames] = useState([]);
   const [consoles, setConsoles] = useState([]);
@@ -24,21 +30,12 @@ export const DashboardClient = () => {
       <Navbar photo='src/assets/img-login.jpg' condition='0' />
       <Carrusel2 products={products2} />
       <h1 className='text-white text-2xl font-bold text-center'>Videojuegos</h1>
-      <Carrusel products={products1} />
+      <Carrusel products={products1} type='Buy' />
       <h1 className='text-white text-2xl font-bold text-center'>Consolas</h1>
-      <Carrusel products={products1} />
-      <button
-        type='button'
-        onClick={() => setIsModalOpen(true)}
-        className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 max-w-24 mx-auto mb-5'
-      >
-        ADD
-      </button>
-      <NewProductModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
-      <Chat />
+      <Carrusel products={products1} type='Buy' />
+      <WebSocketProvider>
+        <Chat nickname='user1' photo='src\assets\support2.webp' type='Help U' />
+      </WebSocketProvider>
     </div>
   );
 };
