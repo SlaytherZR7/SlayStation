@@ -4,6 +4,7 @@ import { Carrusel2 } from "../components/Carrusel2";
 import { Navbar } from "../components/Navbar";
 import { NewProductModal } from "../components/NewProductModal";
 import { Chat } from "../components/Chat";
+import { WebSocketProvider } from '../context/websocketContext';
 
 const products1 = [
   {
@@ -52,11 +53,11 @@ const products1 = [
 const products2 = [
   {
     name: "Impresora 3D Anycubic Kobra Plus",
-    photo: "https://flowbite.com/docs/images/carousel/carousel-3.svg",
+    photo: "src\assets\publish1.webp",
   },
   {
     name: "Impresora 3D Creality Cr-30",
-    photo: "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+    photo: "src\assets\publish2.webp",
   },
 ];
 
@@ -76,7 +77,9 @@ export const DashboardClient = () => {
       <Carrusel products={products1} type="Buy" />
       <h1 className="text-white text-2xl font-bold text-center">Consolas</h1>
       <Carrusel products={products1} type="Buy"/>
-      <Chat photo="src\assets\support2.webp" type="Help U" />
+      <WebSocketProvider>
+            <Chat nickname="user1" photo="src\assets\support2.webp" type="Help U" />
+        </WebSocketProvider>
     </div>
   );
 };
