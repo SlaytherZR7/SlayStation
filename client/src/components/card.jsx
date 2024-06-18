@@ -1,13 +1,17 @@
-// src/components/Card.jsx
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const Card = ({ name, price, quantity, photo }) => {
+export const Card = ({
+  product_name,
+  product_price,
+  product_stock,
+  product_image,
+}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     // Redirigir a la página de producto
-    navigate("/product");
+    navigate('/product');
   };
 
   return (
@@ -18,20 +22,20 @@ export const Card = ({ name, price, quantity, photo }) => {
       <div className='h-48 p-3 overflow-hidden'>
         <img
           className='w-full h-full object-contain'
-          src={photo}
-          alt={name}
+          src={product_image}
+          alt={product_name}
         />
       </div>
       <div className='px-5 pb-5'>
         <h5 className='text-xl font-semibold tracking-tight text-gray-900 dark:text-white'>
-          {name}
+          {product_name}
         </h5>
         <p className='mt-2 text-sm text-gray-500 dark:text-gray-400'>
-          {quantity} left
+          {product_stock} left
         </p>
         <div className='flex items-center justify-between'>
           <span className='text-3xl font-bold text-gray-900 dark:text-white'>
-            ${price}
+            ${product_price}
           </span>
           <button
             onClick={(e) => {

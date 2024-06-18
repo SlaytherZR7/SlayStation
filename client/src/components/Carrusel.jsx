@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { Card } from './Card';
 
-import PropTypes from 'prop-types';
 export const Carrusel = ({ products }) => {
   const carruselRef = useRef(null);
 
@@ -48,10 +47,10 @@ export const Carrusel = ({ products }) => {
             key={index}
           >
             <Card
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-              photo={product.photo}
+              product_name={product.product_name}
+              product_price={product.product_price}
+              product_stock={product.product_stock}
+              product_image={product.product_image}
             />
           </div>
         ))}

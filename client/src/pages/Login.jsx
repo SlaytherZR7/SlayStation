@@ -1,7 +1,31 @@
 import { Link } from 'react-router-dom';
 import { Input } from '../components/Input';
+import { useState } from 'react';
 
 export const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    try {
+      const response = await fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (response.status === 200) {
+        console.log(data);
+      } else {
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className='flex items-center justify-between h-screen bg-gray-900'>
       <div
@@ -11,19 +35,19 @@ export const Login = () => {
         }}
       ></div>
       <div className='flex items-center justify-center w-2/4'>
-        <form className='w-80 flex flex-col gap-4' >
+        <form className='w-80 flex flex-col gap-4' onSubmit={handleLogin}>
           <h1 className='text-white text-4xl font-bold text-center font-press-start-2p'>
             SlayStation
           </h1>
-          <h2 className='text-white text-2xl font-bold text-center'>
-            Sign In
-          </h2>
+          <h2 className='text-white text-2xl font-bold text-center'>Sign In</h2>
           <Input
             isRequired={true}
             label='Email'
             placeholder='slayther.zr@gmail.com'
             id='correo'
             type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             isRequired={true}
@@ -31,6 +55,8 @@ export const Login = () => {
             placeholder='********'
             id='contraseña'
             type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <a
             href='#'
@@ -45,7 +71,9 @@ export const Login = () => {
             Continue
           </button>
           <div className='flex gap-1 justify-end'>
-            <span className='text-white text-sm'>Don't have an account yet? </span>
+            <span className='text-white text-sm'>
+              Don't have an account yet?{' '}
+            </span>
             <Link to='/signup' className='text-white italic underline text-sm'>
               Create an account
             </Link>

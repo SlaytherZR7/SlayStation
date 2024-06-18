@@ -1,8 +1,9 @@
-import * as productModel from '../models/products.model';
+import * as productModel from '../models/product.model.js';
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await productModel.getProducts();
+    const { category, state } = req.query;
+    const products = await productModel.getProducts({ category, state });
     res.status(200).json(products);
   } catch (error) {
     console.error(error);

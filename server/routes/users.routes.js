@@ -5,6 +5,7 @@ import {
   getUserById,
   updateUser,
   deleteUser,
+  loginUser,
 } from '../controllers/users.controller.js';
 
 export const usersRouter = Router();
@@ -14,3 +15,4 @@ usersRouter.post('/', createUser);
 usersRouter.get('/:id', getUserById);
 usersRouter.patch('/:id', updateUser);
 usersRouter.delete('/:id', deleteUser);
+usersRouter.post('/login', loginUser);

@@ -1,7 +1,23 @@
-import { pool } from '../database/bd';
+import { pool } from '../database/bd.js';
 
 export const getProducts = async ({ category, state }) => {
-  const products = await pool.query('SELECT * FROM products');
+  if (category) {
+    const products = await pool.query(
+      'SELECT * FROM products JOIN categories ON products.category_id = categories.category_id JOIN states ON products.state_id = states.state_id WHERE categories.category_id = $1',
+      [category]
+    );
+    return products.rows;
+  }
+  if (state) {
+    const products = await pool.query(
+      'SELECT * FROM products JOIN categories ON products.category_id = categories.category_id JOIN states ON products.state_id = states.state_id WHERE states.state_id = $1',
+      [state]
+    );
+    return products.rows;
+  }
+  const products = await pool.query(
+    'SELECT * FROM products JOIN categories ON products.category_id = categories.category_id JOIN states ON products.state_id = states.state_id'
+  );
   return products.rows;
 };
 

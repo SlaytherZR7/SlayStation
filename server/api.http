@@ -29,3 +29,54 @@ Content-Type: application/json
 
 ### Eliminar un usuario
 DELETE http://localhost:3000/users/10
+
+### Iniciar sesion
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "email": "slayther.zr@gmail.com",
+  "password": "130203"
+}
+
+
+
+
+
+### Obtener todos los productos
+GET http://localhost:3000/products
+
+### Obtener un producto por id
+GET http://localhost:3000/products/8
+
+### Obtener los productos de categoria 1
+GET http://localhost:3000/products?category=1
+
+### Obtener los productos de categoria 2
+GET http://localhost:3000/products?category=2
+
+### Crear un producto
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "category_id": 1,
+    "state_id": 1,
+    "product_name": "Test",
+    "product_description": "Esto es un insert de prueba",
+    "product_price": 600.0,
+    "product_stock": 10,
+    "product_image": "https://yt3.ggpht.com/a/AGF-l7849JTzyKGwOtR5bd50dnjX6EUcvhj5a8s6QA=s900-c-k-c0xffffffff-no-rj-mo"
+}
+
+### Actualizar un producto
+PATCH http://localhost:3000/products/8
+Content-Type: application/json
+
+{
+  "product_name": "Test actualizado",
+  "product_price": 100.00
+}
+
+### Eliminar un producto
+DELETE http://localhost:3000/products/8

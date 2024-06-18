@@ -66,3 +66,10 @@ export const deleteUserById = async (id) => {
   );
   return rowCount > 0;
 };
+
+export const getUserByEmail = async (email) => {
+  const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [
+    email,
+  ]);
+  return user.rows[0];
+};

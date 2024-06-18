@@ -61,3 +61,26 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ message: 'Error deleting user' });
   }
 };
+
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await userModel.getUserByEmail(email);
+    if (!user) {
+      return res.status(401).json({
+        message: 'Invalid email or password',
+        donde: 'Entra en el primer if',
+      });
+    }
+    if (user.password !== password) {
+      return res.status(401).json({
+        message: 'Invalid email or password',
+        donde: 'Entra en el segundo if',
+      });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error logging in' });
+  }
+};
