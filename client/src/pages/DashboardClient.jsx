@@ -3,7 +3,7 @@ import { Carrusel } from '../components/Carrusel';
 import { Carrusel2 } from '../components/Carrusel2';
 import { Navbar } from '../components/Navbar';
 import { Chat } from '../components/Chat';
-
+import { WebSocketProvider } from '../context/websocketContext';
 export const DashboardClient = () => {
   const [videogames, setVideogames] = useState([]);
   const [consoles, setConsoles] = useState([]);
@@ -28,10 +28,10 @@ export const DashboardClient = () => {
       <Carrusel products={videogames} type='Buy' />
       <h1 className='text-white text-2xl font-bold text-center'>Consolas</h1>
       <Carrusel products={consoles} type='Buy' />
-      {/* <WebSocketProvider>
+       <WebSocketProvider>
         <Chat nickname='user1' photo='src\assets\support2.webp' type='Help U' />
-      </WebSocketProvider> */}
-    </div>
+      </WebSocketProvider>   
+      </div>
   );
 };
 
