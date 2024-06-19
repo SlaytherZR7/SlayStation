@@ -1,4 +1,8 @@
 import { pool } from '../database/bd.js';
+import bcrypt from 'bcrypt';
+
+// Número de rondas para generar la sal
+const saltRounds = 10;
 
 export const getUsers = async () => {
   const users = await pool.query('SELECT * FROM users');
@@ -16,6 +20,9 @@ export const createUser = async (userData) => {
     image,
   } = userData;
 
+  // Cifrar la contraseña antes de almacenarla
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+
   const result = await pool.query(
     'INSERT INTO users (user_name, user_last_name, user_email, user_nickname, user_phone, user_image, password, user_type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
     [
@@ -25,7 +32,7 @@ export const createUser = async (userData) => {
       user_nickname,
       phone || null,
       image || null,
-      password,
+      hashedPassword,
       0,
     ]
   );
