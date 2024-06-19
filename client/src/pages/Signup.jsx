@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from '../components/Input';
 import { AvatarUploader } from '../components/AvatarUploader';
@@ -10,6 +10,8 @@ export const SignUp = () => {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [userId, setUserId] = useState(null); // Nueva variable para almacenar el ID del usuario
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -41,8 +43,38 @@ export const SignUp = () => {
       });
       const data = await response.json();
       if (response.status === 201) {
+        setUserId(data.user_id); // Almacenar el ID del usuario
+        setIsSignUpModalOpen(true); // Abrir el modal de preguntas de seguridad
+      } else {
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSaveAnswers = async (answers) => {
+    try {
+      const saveAnswerPromises = answers.map((answer, index) =>
+        fetch('http://localhost:3000/answers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_id: userId,
+            question_id: questions[index].question_id,
+            answer_description: answer,
+          }),
+        })
+      );
+
+      const responses = await Promise.all(saveAnswerPromises);
+      const data = await Promise.all(responses.map((res) => res.json()));
+
+      if (responses.every((res) => res.status === 201)) {
         navigate('/login');
-        console.log(data);
+        console.log('Security answers saved:', data);
       } else {
         console.error(data);
       }
@@ -56,24 +88,28 @@ export const SignUp = () => {
   };
 
   const handleAccept = () => {
-    setIsTermsModalOpen(false); // Cierra el modal
-    setIsChecked(true); // Marca el checkbox
+    setIsTermsModalOpen(false);
+    setIsChecked(true);
   };
 
   const handleCloseModal = () => {
-    setIsTermsModalOpen(false); // Cierra el modal
-    setIsChecked(false); // Desmarca el checkbox
+    setIsTermsModalOpen(false);
+    setIsChecked(false);
   };
 
   const handleAvatarChange = (avatar) => {
     setSelectedAvatar(avatar);
   };
 
-  // const questions = [
-  //   'What is your favorite color?',
-  //   'What is the name of your first pet?',
-  //   'Where is your birthplace?',
-  // ];
+  useEffect(() => {
+    try {
+      fetch('http://localhost:3000/questions')
+        .then((res) => res.json())
+        .then((data) => setQuestions(data));
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   return (
     <div className='flex items-center justify-between bg-gray-900 h-screen'>
@@ -187,12 +223,11 @@ export const SignUp = () => {
           <button
             type='submit'
             disabled={!isChecked && password !== confirmPassword}
-            onClick={() => setIsSignUpModalOpen(true)}
             className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-max mx-auto ${
               !isChecked ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            Sign Up
+            Continue
           </button>
           <div className='flex gap-1 justify-center'>
             <span className='text-white text-sm'>
@@ -205,10 +240,11 @@ export const SignUp = () => {
         </form>
       </div>
 
-      {/* <QuestionsModal
+      <QuestionsModal
         isOpen={isSignUpModalOpen}
         onClose={() => setIsSignUpModalOpen(false)}
         questions={questions}
+        onSave={handleSaveAnswers}
       />
       {isTermsModalOpen && (
         <div
@@ -224,62 +260,53 @@ export const SignUp = () => {
               </h3>
               <button
                 type='button'
-                className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white'
+                className='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'
                 onClick={handleCloseModal}
               >
                 <svg
-                  className='w-3 h-3'
+                  aria-hidden='true'
+                  className='w-5 h-5'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 14 14'
                 >
                   <path
-                    stroke='currentColor'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6'
-                  />
+                    fill-rule='evenodd'
+                    d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                    clip-rule='evenodd'
+                  ></path>
                 </svg>
-                <span className='sr-only'>Close modal</span>
               </button>
             </div>
-
-            <div className='p-4 md:p-5 space-y-4'>
+            <div className='p-4 md:p-6 space-y-6'>
               <p className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
+                ...
               </p>
               <p className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
+                ...
               </p>
             </div>
-
-            <div className='flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600'>
+            <div className='flex justify-end items-center p-4 md:p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600'>
               <button
-                onClick={handleAccept}
+                data-modal-hide='default-modal'
                 type='button'
+                onClick={handleAccept}
                 className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
               >
-                I accept
+                Accept
               </button>
               <button
-                onClick={handleCloseModal}
+                data-modal-hide='default-modal'
                 type='button'
-                className='py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
+                onClick={handleCloseModal}
+                className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600'
               >
                 Decline
               </button>
             </div>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
-export default SignUp;

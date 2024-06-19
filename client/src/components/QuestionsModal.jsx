@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-export const QuestionsModal = ({ isOpen, onClose, questions }) => {
+export const QuestionsModal = ({ isOpen, onClose, questions, onSave }) => {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(''));
 
@@ -8,6 +8,7 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
     if (step < questions.length - 1) {
       setStep(step + 1);
     } else {
+      onSave(answers);
       onClose();
       setStep(0); // Reset to first step after closing
     }
@@ -25,7 +26,7 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
     setAnswers(newAnswers);
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !questions || !questions[step]) return null;
 
   return (
     <div className='fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center'>
@@ -59,11 +60,11 @@ export const QuestionsModal = ({ isOpen, onClose, questions }) => {
         </div>
         <div className='mt-4'>
           <p className='text-base leading-relaxed text-gray-500 dark:text-gray-400'>
-            {questions[step]}
+            {questions[step].question_description}
           </p>
           <input
             type='text'
-            value={answers[step]}
+            value={answers[step] || ''} // Ensure a defined value to avoid the warning
             onChange={handleChange}
             className='w-full p-2 mt-2 border rounded-lg'
           />
