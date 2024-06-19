@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Input } from '../components/Input';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      alert('Please fill in both fields.');
+      return;
+    }
     try {
       const response = await fetch('http://localhost:3000/users/login', {
         method: 'POST',
@@ -17,6 +24,7 @@ export const Login = () => {
       });
       const data = await response.json();
       if (response.status === 200) {
+        navigate('/root');
         console.log(data);
       } else {
         console.error(data);
@@ -60,13 +68,10 @@ export const Login = () => {
           />
           <p
             className='block text-white underline italic text-sm ml-auto'
-            onClick={toggleChat}
+            // onClick={toggleChat}
           >
             Forgot your password?
           </p>
-          {isChatVisible && (
-            <Chat photo='src\assets\support.webp' type='Password Support' />
-          )}
           <button
             type='submit'
             className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-max mx-auto'
