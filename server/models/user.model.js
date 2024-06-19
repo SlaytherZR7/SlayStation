@@ -73,3 +73,11 @@ export const getUserByEmail = async (email) => {
   ]);
   return user.rows[0];
 };
+
+export const getUserForgot = async (email, question_id) => {
+  const user = await pool.query(
+    'SELECT * FROM users LEFT JOIN security_answers ON users.user_id = security_answers.user_id WHERE user_email = $1 AND question_id = $2',
+    [email, question_id]
+  );
+  return user.rows[0];
+};

@@ -40,6 +40,14 @@ Content-Type: application/json
 }
 
 
+### Recuperar contraseña
+POST http://localhost:3000/users/forgot-password
+Content-Type: application/json
+
+{
+  "user_email": "slayther.zr@gmail.com",
+  "question_id": 1,
+}
 
 
 

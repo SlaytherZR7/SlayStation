@@ -84,3 +84,17 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Error logging in' });
   }
 };
+
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email, question_id } = req.body;
+    const user = await userModel.getUserForgot(email, question_id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching user' });
+  }
+};
