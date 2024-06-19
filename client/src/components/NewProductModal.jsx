@@ -1,7 +1,7 @@
 import { Input } from './Input';
 import { ProductImageUploader } from './ProductImageUploader';
 
-export const NewProductModal = ({ isOpen, onClose }) => {
+export const NewProductModal = ({ isOpen, onClose, product }) => {
   if (!isOpen) return null;
 
   return (
@@ -15,7 +15,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
         <div className='relative bg-white rounded-lg shadow dark:bg-gray-700'>
           <div className='flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600'>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-              Create New Product
+              {product ? 'Edit Product' : 'Create New Product'}
             </h3>
             <button
               type='button'
@@ -43,7 +43,9 @@ export const NewProductModal = ({ isOpen, onClose }) => {
           <form className='p-4 md:p-5'>
             <div className='grid gap-4 mb-4 grid-cols-2'>
               <div className='col-span-2'>
-                <ProductImageUploader />
+                <ProductImageUploader
+                  imageUrl={product ? product.product_image : ''}
+                />
               </div>
               <div className='col-span-2'>
                 <Input
@@ -52,6 +54,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   id='nombre'
                   type='text'
                   isRequired={true}
+                  defaultValue={product ? product.product_name : ''}
                 />
               </div>
               <div className='col-span-2 flex flex-wrap gap-4'>
@@ -62,6 +65,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     id='precio'
                     type='number'
                     isRequired={true}
+                    defaultValue={product ? product.product_price : ''}
                   />
                 </div>
                 <div className='flex-1'>
@@ -74,10 +78,11 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   <select
                     id='category'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+                    defaultValue={product ? product.category_id : ''}
                   >
                     <option value=''>Select a category</option>
-                    <option value='videojuego'>Videogames</option>
-                    <option value='consola'>Console</option>
+                    <option value='1'>Console</option>
+                    <option value='2'>Videogame</option>
                   </select>
                 </div>
               </div>
@@ -89,6 +94,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                     id='cantidad'
                     type='number'
                     isRequired={true}
+                    defaultValue={product ? product.product_stock : ''}
                   />
                 </div>
                 <div className='flex-1'>
@@ -101,13 +107,12 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   <select
                     id='estado'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+                    defaultValue={product ? product.state_id : ''}
                   >
-                    <option value=''>
-                      Select the state of the product
-                    </option>
-                    <option value='nuevo'>New</option>
-                    <option value='usado'>Used</option>
-                    <option value='recondicionado'>Refurbished</option>
+                    <option value=''>Select the state of the product</option>
+                    <option value='1'>New</option>
+                    <option value='2'>Used</option>
+                    <option value='3'>Refurbished</option>
                   </select>
                 </div>
               </div>
@@ -123,6 +128,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   rows='4'
                   className='block min-h-24 max-h-72 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   placeholder='Write product description here'
+                  defaultValue={product ? product.product_description : ''}
                 ></textarea>
               </div>
             </div>
@@ -142,7 +148,7 @@ export const NewProductModal = ({ isOpen, onClose }) => {
                   clipRule='evenodd'
                 ></path>
               </svg>
-              Add new product
+              {product ? 'Save Changes' : 'Add new product'}
             </button>
           </form>
         </div>

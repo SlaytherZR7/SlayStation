@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Card } from './Card';
 import ProductModal from './ProductModal';
+import { NewProductModal } from './NewProductModal';
 
-export const Carrusel = ({ products }) => {
+export const Carrusel = ({ products, type }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const carruselRef = useRef(null);
 
@@ -15,6 +16,7 @@ export const Carrusel = ({ products }) => {
   };
 
   const handleProductClick = (product) => {
+    console.log(product);
     setSelectedProduct(product);
   };
 
@@ -62,7 +64,7 @@ export const Carrusel = ({ products }) => {
               product_price={product.product_price}
               product_stock={product.product_stock}
               product_image={product.product_image}
-              product_type='Buy'
+              product_type={type}
             />
           </div>
         ))}
@@ -90,8 +92,15 @@ export const Carrusel = ({ products }) => {
           <span className='sr-only'>Next</span>
         </span>
       </button>
-      {selectedProduct && (
+      {selectedProduct && type === 'Buy' && (
         <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      )}
+      {selectedProduct && type === 'Edit' && (
+        <NewProductModal
+          isOpen={Boolean(selectedProduct)}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+        />
       )}
     </div>
   );

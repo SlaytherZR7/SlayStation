@@ -14,14 +14,12 @@ export const DashboardRoot = () => {
     fetch('http://localhost:3000/products?category=2')
       .then((res) => res.json())
       .then((data) => setVideogames(data));
-    console.log(videogames);
   }, []);
 
   useEffect(() => {
     fetch('http://localhost:3000/products?category=1')
       .then((res) => res.json())
       .then((data) => setConsoles(data));
-    console.log(consoles);
   }, []);
 
   return (
@@ -29,9 +27,9 @@ export const DashboardRoot = () => {
       <Navbar photo='src/assets/img-login.jpg' condition='0' />
       <Carrusel2 products={videogames} />
       <h1 className='text-white text-2xl font-bold text-center'>Videogames</h1>
-      <Carrusel products={videogames} />
+      <Carrusel products={videogames} type='Edit' />
       <h1 className='text-white text-2xl font-bold text-center'>Consoles</h1>
-      <Carrusel products={consoles} />
+      <Carrusel products={consoles} type='Edit' />
       <button
         type='button'
         onClick={() => setIsModalOpen(true)}
@@ -51,7 +49,7 @@ export const DashboardRoot = () => {
         />
         <span className='top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'></span>
       </div>
-      <Chat />
+      {/* <Chat /> */}
     </div>
   );
 };

@@ -7,7 +7,6 @@ export const ProductCard = ({
   quantity,
   state,
   photo,
-  onClose,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,7 +22,7 @@ export const ProductCard = ({
     <div className='bg-gray-800 dark:border-gray-700 flex justify-center items-center'>
       <div className='w-11/12 md:w-3/4 lg:w-2/3 xl:w-2/3 dark:bg-gray-900 rounded-lg flex flex-col md:flex-row p-5'>
         {/* Contenedor de la imagen */}
-        <div className='flex-1 md:flex-grow-[2/3] flex items-center justify-center bg-white p-3'>
+        <div className='flex-1 md:flex-grow-[2/3] flex items-center justify-center bg-inherit p-3'>
           <div
             className='h-96 md:h-full overflow-hidden cursor-pointer'
             onClick={handleOpenModal}
