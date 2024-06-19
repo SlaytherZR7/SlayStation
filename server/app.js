@@ -1,6 +1,8 @@
 import express from 'express';
 import { usersRouter } from './routes/users.routes.js';
 import { productsRouter } from './routes/products.routes.js';
+import { questionsRouter } from './routes/questions.routes.js';
+import { answersRouter } from './routes/answers.routes.js';
 import cors from 'cors';
 import 'dotenv/config.js';
 
@@ -15,6 +17,8 @@ app.disable('x-powered-by');
 
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/questions', questionsRouter);
+app.use('/answers', answersRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

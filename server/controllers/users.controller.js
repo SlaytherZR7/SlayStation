@@ -1,4 +1,5 @@
 import * as userModel from '../models/user.model.js';
+import bcrypt from 'bcrypt';
 
 export const getUsers = async (req, res) => {
   try {
@@ -69,18 +70,31 @@ export const loginUser = async (req, res) => {
     if (!user) {
       return res.status(401).json({
         message: 'Invalid email or password',
-        donde: 'Entra en el primer if',
       });
     }
-    if (user.password !== password) {
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
       return res.status(401).json({
         message: 'Invalid email or password',
-        donde: 'Entra en el segundo if',
       });
     }
     res.status(200).json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error logging in' });
+  }
+};
+
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email, question_id } = req.body;
+    const user = await userModel.getUserForgot(email, question_id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching user' });
   }
 };
