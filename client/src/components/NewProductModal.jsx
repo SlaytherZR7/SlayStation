@@ -1,7 +1,61 @@
 import { Input } from './Input';
 import { ProductImageUploader } from './ProductImageUploader';
+import { useState } from 'react';
 
 export const NewProductModal = ({ isOpen, onClose, product }) => {
+  const [productName, setProductName] = useState(
+    product ? product.product_name : ''
+  );
+  const [productPrice, setProductPrice] = useState(
+    product ? product.product_price : ''
+  );
+  const [productCategory, setProductCategory] = useState(
+    product ? product.category_id : ''
+  );
+  const [productStock, setProductStock] = useState(
+    product ? product.product_stock : ''
+  );
+  const [productState, setProductState] = useState(
+    product ? product.state_id : ''
+  );
+  const [productDescription, setProductDescription] = useState(
+    product ? product.product_description : ''
+  );
+  const [productImage, setProductImage] = useState(
+    product ? product.product_image : ''
+  );
+
+  const handleSubmit = async (e) => {
+    if (product) {
+      // Edit product
+    } else {
+      try {
+        const response = await fetch('http://localhost:3000/products', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            product_name: productName,
+            product_price: productPrice,
+            category_id: productCategory,
+            product_stock: productStock,
+            state_id: productState,
+            product_description: productDescription,
+            product_image: productImage,
+          }),
+        });
+        const data = await response.json();
+        if (response.status === 201) {
+          console.log(data);
+        } else {
+          console.error(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
   if (!isOpen) return null;
 
   return (
@@ -54,7 +108,8 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                   id='nombre'
                   type='text'
                   isRequired={true}
-                  defaultValue={product ? product.product_name : ''}
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
                 />
               </div>
               <div className='col-span-2 flex flex-wrap gap-4'>
@@ -65,7 +120,8 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                     id='precio'
                     type='number'
                     isRequired={true}
-                    defaultValue={product ? product.product_price : ''}
+                    value={productPrice}
+                    onChange={(e) => setProductPrice(e.target.value)}
                   />
                 </div>
                 <div className='flex-1'>
@@ -78,7 +134,8 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                   <select
                     id='category'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                    defaultValue={product ? product.category_id : ''}
+                    value={productCategory}
+                    onChange={(e) => setProductCategory(e.target.value)}
                   >
                     <option value=''>Select a category</option>
                     <option value='1'>Console</option>
@@ -94,7 +151,8 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                     id='cantidad'
                     type='number'
                     isRequired={true}
-                    defaultValue={product ? product.product_stock : ''}
+                    value={productStock}
+                    onChange={(e) => setProductStock(e.target.value)}
                   />
                 </div>
                 <div className='flex-1'>
@@ -107,7 +165,8 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                   <select
                     id='estado'
                     className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                    defaultValue={product ? product.state_id : ''}
+                    value={productState}
+                    onChange={(e) => setProductState(e.target.value)}
                   >
                     <option value=''>Select the state of the product</option>
                     <option value='1'>New</option>
@@ -128,13 +187,15 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                   rows='4'
                   className='block min-h-24 max-h-72 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   placeholder='Write product description here'
-                  defaultValue={product ? product.product_description : ''}
+                  value={productDescription}
+                  onChange={(e) => setProductDescription(e.target.value)}
                 ></textarea>
               </div>
             </div>
             <button
               type='submit'
               className='text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+              onClick={handleSubmit}
             >
               <svg
                 className='mr-1 ml-1 w-5 h-5'

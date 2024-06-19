@@ -14,13 +14,13 @@ export const DashboardRoot = () => {
     fetch('http://localhost:3000/products?category=2')
       .then((res) => res.json())
       .then((data) => setVideogames(data));
-  }, []);
+  }, [videogames]);
 
   useEffect(() => {
     fetch('http://localhost:3000/products?category=1')
       .then((res) => res.json())
       .then((data) => setConsoles(data));
-  }, []);
+  }, [consoles]);
 
   return (
     <div className='bg-gray-900 flex flex-col gap-4'>
