@@ -25,9 +25,36 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
     product ? product.product_image : ''
   );
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     if (product) {
-      // Edit product
+      try {
+        const response = await fetch(
+          `http://localhost:3000/products/${product.product_id}`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              product_name: productName,
+              product_price: productPrice,
+              category_id: productCategory,
+              product_stock: productStock,
+              state_id: productState,
+              product_description: productDescription,
+              product_image: productImage,
+            }),
+          }
+        );
+        const data = await response.json();
+        if (response.status === 200) {
+          console.log(data);
+        } else {
+          console.error(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       try {
         const response = await fetch('http://localhost:3000/products', {
@@ -56,6 +83,27 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
       }
     }
   };
+
+  const handleDeleteProduct = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/products/${product.product_id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+      const data = await response.json();
+      if (response.status === 200) {
+        console.log(data);
+        onClose();
+      } else {
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -192,25 +240,36 @@ export const NewProductModal = ({ isOpen, onClose, product }) => {
                 ></textarea>
               </div>
             </div>
-            <button
-              type='submit'
-              className='text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-              onClick={handleSubmit}
-            >
-              <svg
-                className='mr-1 ml-1 w-5 h-5'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
+            <div className='flex justify-between'>
+              <button
+                type='submit'
+                className='text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                onClick={handleSubmit}
               >
-                <path
-                  fillRule='evenodd'
-                  d='M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z'
-                  clipRule='evenodd'
-                ></path>
-              </svg>
-              {product ? 'Save Changes' : 'Add new product'}
-            </button>
+                <svg
+                  className='mr-1 ml-1 w-5 h-5'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z'
+                    clipRule='evenodd'
+                  ></path>
+                </svg>
+                {product ? 'Save Changes' : 'Add new product'}
+              </button>
+              {product && (
+                <button
+                  type='button'
+                  className='btn btn-danger text-white border-xs rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'
+                  onClick={handleDeleteProduct}
+                >
+                  Delete Product
+                </button>
+              )}
+            </div>
           </form>
         </div>
       </div>
