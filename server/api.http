@@ -87,3 +87,24 @@ GET http://localhost:3000/questions
 
 ### Obtener una pregunta por id
 GET http://localhost:3000/questions/1
+
+
+
+### Obtener todas las respuestas
+GET http://localhost:3000/answers
+
+### Obtener una respuesta por id
+GET http://localhost:3000/answers/1
+
+### Obtener las respuestas de un usuario
+GET http://localhost:3000/answers?user_id=4
+
+### Crear una respuesta
+POST http://localhost:3000/answers
+Content-Type: application/json
+
+{
+  "user_id": 14,
+  "question_id": 1,
+  "answer_description": "Esto es una respuesta de prueba"
+}
